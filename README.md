@@ -10,7 +10,7 @@ As a parent, I've encountered difficulties with the field trip forms my kids' sc
 
 SEQUENCE:
 
-Teacher will create itself account on this app, then he will login with his account.
+Teacher will create an account on this app, then he will login with his account.
 
 Then he will have an option to view existing trips, and another option to create new trip.
 
