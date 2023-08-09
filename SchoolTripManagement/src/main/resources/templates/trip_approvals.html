@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Trip List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="container mt-5">
+    <h1>Trip '<span th:text="${trip.getName()}"></span>' Approval List</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Approval ID</th>
+            <th>Trip Name</th>
+            <th>Status</th>
+            <th>Parent Name</th>
+            <th>Parent Email</th>
+            <th sec:authorize="hasAnyRole('ROLE_TEACHER')">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="approval : ${trip.getApproval()}">
+            <td th:text="${approval.getId()}"></td>
+            <td th:text="${approval.getTrip().getName()}"></td>
+            <td th:text="${approval.status}"></td>
+            <td th:text="${approval.getUser().getName()}"></td>
+            <td th:text="${approval.getUser().getUsername()}"></td>
+            <td sec:authorize="hasAnyRole('ROLE_TEACHER')">
+                <a th:href="@{/deleteApproval/{approvalId}/{tripId}(approvalId=${approval.getId()},tripId=${trip.getId()})}"
+                   class="btn btn-danger btn-sm">Delete Approval</a>
+                <!--<a th:href="@{/updateTrip/{tripId}(tripId=${trip.getId()})}"
+                   class="btn btn-primary btn-sm">Update Trip</a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

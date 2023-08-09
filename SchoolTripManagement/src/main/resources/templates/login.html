@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>School Field Trips Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/Style.css}" />
+</head>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="login-page">
+		<div class="login-page-content">
+			<div class="login-page-logo">
+				<span class="logo"><img th:src="@{/images/Logo_SignUp.png}" /> </span>
+			</div>
+			<div>
+
+
+				<div>
+					<p th:if="${error}" class="alert alert-danger">Wrong username or password</p>
+					<form class="login-page-form" th:action="@{/login}" method="post">
+
+						<input type="text" name="username" id="username" class="form-login-input"
+							placeholder="Enter your username" required="true" autofocus="true" />
+
+
+
+						<input type="password" name="password" id="password" class="form-login-input"
+							placeholder="Enter your Password" required="true" />
+
+						<button type="submit" class="form-login-btn" value="Log In">Login</button>
+
+						<a href="./pages/ContactuS.html" class="form-login-link">Having
+							trouble logging in?</a>
+						<span>or</span>
+						<a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
+						<!-- <a th:href="@{/register}">
+                    <input type="button"
+                    class="form-signup-btn" value="Sign Up"></a>
+                </form>-->
+				</div>
+			</div>
+
+		</div>
+</body>
+
+</html>

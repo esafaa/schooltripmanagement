@@ -1,0 +1,34 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+
+}
+
+
+div.navbar.navbar-inverse.navbar-fixed-top{
+ 
+	background-color: hsl(45, 100%, 96%);
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 25%);
+}
+
+div.navbar.navbar-inverse.navbar-fixed-top a{
+	    color:  hsl(42, 78%, 60%);
+    border-top: 0px solid hsl(42, 78%, 60%);
+    cursor: pointer;
+}
+
+div.navbar.navbar-inverse.navbar-fixed-top a:hover{
+	color: rgb(128, 64, 64);
+	
+	}
+	
+	
+	a.btn.btn-primary.btn-sm {
+  background-color: rgb(219, 187, 4); /* Replace #ff0000 with your desired background color */
+  border: none; /* Remove the border */
+}

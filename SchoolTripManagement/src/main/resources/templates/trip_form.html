@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trip Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="container mt-5">
+    <h1 class="mb-4">Create Trip</h1>
+    <form th:action="@{/saveTrip}" th:object="${trip}" method="post" enctype="multipart/form-data">
+
+        <input type="text" class="form-control" th:field="*{id}" id="id" style="display: none"/>
+
+        <div class="form-group">
+            <label for="name">Trip Name:</label>
+            <input type="text" class="form-control" th:field="*{name}" id="name" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Destination:</label>
+            <input type="text" class="form-control" th:field="*{destination}" id="destination" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="tripLeader">Trip Leader:</label>
+            <input type="text" class="form-control" th:field="*{tripLeader}" id="tripLeader" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="otherStaffAttending">Other Staff Attending:</label>
+            <input type="text" class="form-control" th:field="*{otherStaffAttending}" id="otherStaffAttending"
+                   required/>
+        </div>
+
+        <div class="form-group">
+            <label for="purpose">Purpose:</label>
+            <input type="text" class="form-control" th:field="*{purpose}" id="purpose" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" class="form-control" th:field="*{date}" id="date" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="departureTime">Departure Time:</label>
+            <input type="time" class="form-control" th:field="*{departureTime}" id="departureTime" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="returnTime">Return Time:</label>
+            <input type="time" class="form-control" th:field="*{returnTime}" id="returnTime" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="numberOfStudents">Number of Students:</label>
+            <input type="number" class="form-control" th:field="*{numberOfStudents}" id="numberOfStudents" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" class="form-control" th:field="*{price}" id="price" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="files">Upload Files:</label>
+            <input type="file" class="form-control-file" name="files" multiple="multiple" id="files" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="background-color: rgb(219, 187, 4);">Submit</button>
+    </form>
+</div>
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

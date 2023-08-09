@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Trip List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="container mt-5">
+    <h1>Trip List</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Approval ID</th>
+            <th>Trip Name</th>
+            <th>Price</th>
+            <th>Destination</th>
+            <th>Departure Time</th>
+            <th>Return Time</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="approval : ${approvalList}">
+            <td th:text="${approval.getId()}"></td>
+            <td th:text="${approval.getTrip().getName()}"></td>
+            <td th:text="${approval.getTrip().getPrice()}"></td>
+            <td th:text="${approval.getTrip().getDestination()}"></td>
+            <td th:text="${approval.getTrip().getDepartureTime()}"></td>
+            <td th:text="${approval.getTrip().getReturnTime()}"></td>
+            <td>
+                <a th:href="@{/deleteApproval/{approvalId}/{tripId}(approvalId=${approval.getId()},tripId=${approval.getTrip().getId()})}"
+                   class="btn btn-danger btn-sm">Delete Approval</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

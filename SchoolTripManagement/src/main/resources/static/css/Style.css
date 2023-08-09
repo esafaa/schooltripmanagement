@@ -1,0 +1,144 @@
+
+
+/* 
+=============== 
+Global Styles
+=============== 
+ */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-secondary);
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+
+
+/* 
+=============== 
+Login Page
+=============== 
+ */
+.login-page{
+    width:100%;
+    height:50vh;
+    position:relative;
+}
+
+.login-page-content{
+    position:absolute;
+    top:5%;
+    left:50%;
+    transform: translate(-50%);
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    border:.1rem solid #ec9d42dc;
+    padding: 1rem;
+}
+
+img {
+    width: 350px;
+    position :center;
+  }
+
+.login-page-logo{
+    margin-bottom:1.2rem;
+    margin-top:1.2rem;
+}
+
+
+.login-page-form{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.login-page-form input{
+width:25rem;
+height:4.5rem;
+margin:1rem;
+border-radius:0.5rem;
+}
+
+.form-login-input{
+    padding:0 1.5rem;
+    border:0.1rem solid #ec9d42dc;
+    font-size: 1rem;
+}
+
+.form-login-btn{
+    background-color:   #f09329dc  ;
+    color: #fff;
+    border:0.1rem solid #ec9d42dc;
+    font-size:1.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.form-login-link{
+    font-size:1.6rem;
+    color:#ec9d42dc;
+    margin:1.2rem 0 1rem 0 ;
+}
+
+.login-page-form span{
+    width:2rem;
+    font-size:1.8rem;
+    color: #ecd364;
+    margin:1rem 0;
+    position: relative;
+
+}
+
+.login-page-form span::before{
+    content:"";
+    width:10rem;
+    height: 0.1rem;
+    background-color:#ec9d42dc;
+    position:absolute;
+    top:50%;
+    right: 3.5rem;
+    transform: translateY(-50%);
+}
+
+.login-page-form span{
+    color:#ec9d42dc;
+}
+.login-page-form span::after{
+    content:"";
+    width:10rem;
+   
+    height: 0.1rem;
+    background-color:#ec9d42dc;
+    position:absolute;
+    top:50%;
+    left: 3.5rem;
+    transform: translateY(-50%);
+}
+
+
+.form-signup-btn{
+    background-color: #f8f2ecdc;
+    border:.1rem solid #dfa15bdc;
+    font-size:1.8rem;
+    color: #ec9d42dc;
+    font-weight: 600;
+    cursor: pointer;
+}
+.text-center{
+	font-style:normal ;
+	color: rgb(128, 64, 64);
+}
+
+/*End of Login page*/
+

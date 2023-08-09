@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title th:text="${trip.name} + ' Files'">Trip Files</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+</head>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="container mt-5">
+    <h1 th:text="${trip.name} + ' Files'"></h1>
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>File ID</th>
+            <th>File Name</th>
+            <th>File Type</th>
+            <th>View</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="file : ${trip.getTripFiles}">
+            <td th:text="${file.id}"></td>
+            <td th:text="${file.fileName}"></td>
+            <td th:text="${file.fileType}"></td>
+            <td>
+                <a th:href="@{/viewFile/{id}(id=${file.id})}" target="_blank" class="btn btn-primary btn-sm">View
+                    File</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteFile/{fileId}/{tripId}(fileId=${file.id},tripId=${trip.getId()})}"
+                   class="btn btn-danger btn-sm" sec:authorize="hasAnyRole('ROLE_TEACHER')">Delete File</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

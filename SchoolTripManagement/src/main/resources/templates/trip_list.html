@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Trip List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="container mt-5">
+    <h1>Trip List</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Trip Name</th>
+            <th>Destination</th>
+            <th>Trip Leader</th>
+            <th>Other Staff Attending</th>
+            <th>Purpose</th>
+            <th>Date</th>
+            <th>Departure Time</th>
+            <th>Return Time</th>
+            <th>Number of Students</th>
+            <th>Price</th>
+            <th>Files</th>
+            <th sec:authorize="hasAnyRole('ROLE_TEACHER')">Approvals</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="trip : ${trips}">
+            <td th:text="${trip.name}"></td>
+            <td th:text="${trip.destination}"></td>
+            <td th:text="${trip.tripLeader}"></td>
+            <td th:text="${trip.otherStaffAttending}"></td>
+            <td th:text="${trip.purpose}"></td>
+            <td th:text="${trip.date}"></td>
+            <td th:text="${trip.departureTime}"></td>
+            <td th:text="${trip.returnTime}"></td>
+            <td th:text="${trip.numberOfStudents}"></td>
+            <td th:text="${trip.price}"></td>
+            <td>
+                <a th:href="@{/tripFiles/{id}(id=${trip.id})}" class="btn btn-primary btn-sm" style="background-color: rgb(230, 162, 4)">View Files</a>
+            </td>
+            <td sec:authorize="hasAnyRole('ROLE_TEACHER')">
+                <a th:href="@{/viewApprovals/{id}(id=${trip.id})}" class="btn btn-success btn-sm">View Approvals</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteTrip/{tripId}(tripId=${trip.getId()})}"
+                   class="btn btn-danger btn-sm" sec:authorize="hasAnyRole('ROLE_TEACHER')">Delete Trip</a>
+                <a th:href="@{/updateTrip/{tripId}(tripId=${trip.getId()})}"
+                   class="btn btn-primary btn-sm" sec:authorize="hasAnyRole('ROLE_TEACHER')">Update Trip</a>
+                <a th:href="@{/checkout/{tripId}(tripId=${trip.getId()})}"
+                   class="btn btn-success btn-sm" sec:authorize="hasAnyRole('ROLE_PARENT')">Approve Trip</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

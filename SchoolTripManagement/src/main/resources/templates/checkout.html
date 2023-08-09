@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- custom css -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    #errorMessage {
+        font-size: 15px;
+        color: red;
+        text-align: center;
+        background: blanchedalmond;
+        padding: 20px;
+    }
+
+    #priceLine {
+        text-align: center;
+    }
+
+    #payNowBtn {
+        font-size: 20px;
+        margin: 20px;
+    }
+</style>
+<body>
+<div class="container">
+    <header th:insert="~{fragments/header :: header}"></header>
+</div>
+<br><br>
+<div class="jumbotron text-center">
+    <h1 style="text-align: center;margin: 100px;font-family: cursive;font-size: 50px;">Checkout page !</h1>
+
+
+    <h2 id="priceLine">Total Price that you have to Pay for the Trip <span th:text="${trip.getName()}"></span> is <span
+            th:text="${trip.getPrice()}"></span></h2>
+
+    <a th:href="@{/approveTrip/{id}(id=${trip.getId()})}"
+       class="btn btn-success btn-sm" id="payNowBtn">Pay Now</a>
+
+    <h3 th:if="${alreadyApproved}" id="errorMessage"> You have already approved this trip before. Go to your Approved
+        List to
+        confirm.</h3>
+</div>
+
+
+<!-- Include the footer using th:replace -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
