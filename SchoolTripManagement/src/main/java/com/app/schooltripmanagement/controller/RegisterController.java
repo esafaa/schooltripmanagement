@@ -34,7 +34,7 @@ public class RegisterController {
 
 	// Controller method to process the submitted registration form
 	@PostMapping("/register")
-	public String processRegistrationForm(@ModelAttribute(name = "user") @Valid User user, BindingResult result,
+	public String processRegistrationForm(@ModelAttribute(name = "user") User user, BindingResult result,
 			Model model) {
 		// Check if the user already exists
 		boolean ifUserExists = userService.checkIfUserExists(user.getUsername());

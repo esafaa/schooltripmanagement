@@ -19,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "approvals")
-public class Approval extends User {
+public class Approval  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
