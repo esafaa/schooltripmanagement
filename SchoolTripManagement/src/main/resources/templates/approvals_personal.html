@@ -46,7 +46,7 @@
             <td th:text="${approval.getTrip().getReturnTime()}"></td>
             <td>
                 <a th:href="@{/deleteApproval/{approvalId}/{tripId}(approvalId=${approval.getId()},tripId=${approval.getTrip().getId()})}"
-                   class="btn btn-danger btn-sm">Delete Approval</a>
+                   class="btn btn-danger btn-sm" sec:authorize="hasAnyRole('ROLE_PARENT')">Delete Approval</a>
             </td>
         </tr>
         </tbody>

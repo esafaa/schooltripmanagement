@@ -20,7 +20,9 @@ body {
   font-size: 0.875rem;
 }
 
-
+::placeholder{
+	font-size: 15px;
+}
 
 /* 
 =============== 
@@ -224,3 +226,10 @@ h1{
   border-bottom-right-radius: 0.5rem;
 }
 
+#message{
+	position:absolute;
+	bottom:-30px;
+	color:rgb(255, 0, 0);
+	font_size:15px;
+	display:none;
+}

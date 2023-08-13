@@ -32,7 +32,7 @@
             <th>Status</th>
             <th>Parent Name</th>
             <th>Parent Email</th>
-            <th sec:authorize="hasAnyRole('ROLE_TEACHER')">Actions</th>
+            <th sec:authorize="hasAnyRole('ROLE_PARENT')">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
             <td th:text="${approval.getUser().getUsername()}"></td>
             <td sec:authorize="hasAnyRole('ROLE_TEACHER')">
                 <a th:href="@{/deleteApproval/{approvalId}/{tripId}(approvalId=${approval.getId()},tripId=${trip.getId()})}"
-                   class="btn btn-danger btn-sm">Delete Approval</a>
+                   class="btn btn-danger btn-sm" sec:authorize="hasAnyRole('ROLE_PARENT')">Delete Approval</a>
                 <!--<a th:href="@{/updateTrip/{tripId}(tripId=${trip.getId()})}"
                    class="btn btn-primary btn-sm">Update Trip</a>-->
             </td>

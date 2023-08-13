@@ -47,7 +47,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.csrf(AbstractHttpConfigurer::disable)// CSRF protection is disabled here.
-				.authorizeHttpRequests(auth->{auth.requestMatchers("/resources/**", "/static/**", "/register", "/css/**", "/images/**")// Any request starting with "/resources/" or "/static/"or .... will be
+				.authorizeHttpRequests(auth->{auth.requestMatchers("/resources/**", "/static/**", "/register", "/css/**", "/images/**","/js/**")// Any request starting with "/resources/" or "/static/"or .... will be
 					// permitted without authentication.
 						.permitAll()
 						.anyRequest().authenticated();});// Any other request should be authenticated.

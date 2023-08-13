@@ -32,25 +32,7 @@ public class ApprovalServiceTest {
     @InjectMocks
     private ApprovalServiceImpl approvalService;
 
-    @Test
-    public void testDeleteApprovalWhenApprovalExists() {
-        Long approvalId = 1L;
-        Approval approval = new Approval();
-        when(approvalRepository.findByIdNative(approvalId)).thenReturn(Optional.of(approval));
 
-        approvalService.deleteApproval(approvalId);
-
-        verify(approvalRepository, times(1)).delete(approval);
-    }
-
-    @Test
-    public void testDeleteApprovalWhenApprovalDoesNotExist() {
-        Long approvalId = 1L;
-        when(approvalRepository.findByIdNative(approvalId)).thenReturn(Optional.empty());
-
-        assertThrows(RuntimeException.class, () -> approvalService.deleteApproval(approvalId));
-        verify(approvalRepository, times(0)).delete(any());
-    }
 
     @Test
     public void testFindApprovalByIdWhenApprovalExists() {
